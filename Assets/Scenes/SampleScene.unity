@@ -1764,12 +1764,17 @@ PrefabInstance:
     - target: {fileID: 5353807066326380954, guid: 1addbd7e028ef294b822b43b0fd54297,
         type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785512788938990019, guid: 1addbd7e028ef294b822b43b0fd54297,
         type: 3}
       propertyPath: m_Name
       value: Audio Analyzer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785512788938990019, guid: 1addbd7e028ef294b822b43b0fd54297,
+        type: 3}
+      propertyPath: m_TagString
+      value: Music
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3783,6 +3788,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3948276910949809113, guid: ce456fb01447bbd49830a62d0bc05cd3,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778835068}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
