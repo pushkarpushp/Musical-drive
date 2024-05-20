@@ -29,12 +29,20 @@ public class LoadOnlineImageToCanvas : MonoBehaviour
     {
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
         yield return request.SendWebRequest();
+
         if (request.isNetworkError || request.isHttpError)
+        {
             Debug.Log(request.error);
+        }
         else
         {
-            Texture2D webTexture = ((DownloadHandlerTexture)request.downloadHandler).texture as Texture2D;
-           // Sprite webSprite = SpriteFromTexture2D(webTexture);
+            Texture2D webTexture = DownloadHandlerTexture.GetContent(request);
+
+            // Adjust texture settings for better quality
+            webTexture.filterMode = FilterMode.Bilinear; // or FilterMode.Trilinear for even better quality
+            webTexture.anisoLevel = 9; // Increase anisotropic level
+            webTexture.wrapMode = TextureWrapMode.Clamp; // Ensure proper wrapping
+
             gameObject.GetComponent<RawImage>().texture = webTexture;
         }
     }

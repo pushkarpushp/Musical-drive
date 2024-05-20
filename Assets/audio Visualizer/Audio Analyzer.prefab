@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 435377309754653994}
   - component: {fileID: 5353807066326380954}
   - component: {fileID: 1201340523486470725}
+  - component: {fileID: 2936946410561936449}
   m_Layer: 0
   m_Name: Audio Analyzer
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,11 +41,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6785512788938990019}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9a1ac8e274c0a96409b9b52f7638df18, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -144,10 +145,10 @@ MonoBehaviour:
   settings:
     pillar:
       type: 1
-      shape: 2
-      radius: 20
-      amount: 64
-      sensitivity: 40
+      shape: 0
+      radius: 0.1
+      amount: 15
+      sensitivity: 30
       speed: 5
     spectrum:
       FffWindowType: 5
@@ -155,3 +156,20 @@ MonoBehaviour:
     Prefabs:
       CylPrefab: {fileID: 101714, guid: d325793daac92e14b9e5048660519914, type: 3}
       BoxPrefab: {fileID: 162950, guid: 3ec3401a53b33b8469bde4c1dd203fc8, type: 3}
+  ScaleFactor: 1.5
+  yOffset: 1.506
+  xPos: 0.003
+  zPos: 7.685
+--- !u!114 &2936946410561936449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785512788938990019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7184ec544cdd48d43b026fc68f82ffbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioUrl: https://statics-v2.lens.dev/media-snapshot/e221a39c40346ef7a0eac6f141a04d386eb5e5e7c90f9d963e5695d526c19e1b.mp3
