@@ -7,6 +7,8 @@ using TMPro;
 
 public class AudioFromURL : MonoBehaviour
 {
+    public SpriteController spriteController;
+    public MusicPlayer musicPlayer;
     public string audioUrl = ""; // URL to your audio file
     private AudioSource audioSource;
     public Slider audioSlider; // Reference to the UI Slider
@@ -16,7 +18,6 @@ public class AudioFromURL : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        setMusic(audioUrl);
     }
 
     void Update()
@@ -35,6 +36,13 @@ public class AudioFromURL : MonoBehaviour
             // Update total duration text
             durationText.text = FormatTime(audioSource.clip.length);
         }
+
+        if (musicPlayer.selectedItem.Metadata.Asset.Audio.Optimized.Uri != audioUrl)
+        {
+            audioUrl = musicPlayer.selectedItem.Metadata.Asset.Audio.Optimized.Uri;
+            Debug.Log("Audio URL: " + audioUrl);
+            setMusic(audioUrl);
+        }
     }
 
     public void setMusic(string url)
@@ -44,7 +52,14 @@ public class AudioFromURL : MonoBehaviour
 
     IEnumerator PlayAudioFromURL(string url)
     {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
+        var audioType = AudioType.MPEG;
+
+        if (url.EndsWith(".wav"))
+        {
+            audioType = AudioType.WAV;
+        }
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, audioType))
         {
             yield return www.SendWebRequest();
 
@@ -56,9 +71,10 @@ public class AudioFromURL : MonoBehaviour
             {
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
                 audioSource.clip = clip;
-                //audioSource.Play();
+                audioSource.Play();
                 // Optionally, reset the slider to 0 at the start of playing
                 audioSlider.value = 0;
+                spriteController.isPlaying = true;
             }
         }
     }

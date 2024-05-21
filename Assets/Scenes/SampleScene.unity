@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.015163889, g: 0.009042416, b: 0.014089847, a: 1}
+  m_IndirectSpecularColor: {r: 0.015430791, g: 0.009246423, b: 0.014405392, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 187282216}
 --- !u!114 &17215831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &83655068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,7 +2155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.3, y: 70.3}
+  m_AnchoredPosition: {x: -45.3, y: 65.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168585310
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Night Life
+  m_text: 12334567890123456789
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -25
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2519,6 +2519,106 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!1 &187282215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187282220}
+  - component: {fileID: 187282219}
+  - component: {fileID: 187282218}
+  - component: {fileID: 187282217}
+  - component: {fileID: 187282216}
+  - component: {fileID: 187282221}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &187282216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187282215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00488cb0dd48a3469bf4ebb96e6502b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedPlayList: 1
+--- !u!114 &187282217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187282215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a234daf47f4ab748b2a2ca19ab43196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &187282218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187282215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbff708f8ed2c3449546093a1dc44fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &187282219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187282215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0ac0c0c0ae22949b1e1b8ffc996a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &187282220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187282215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.358573, y: 2.6787663, z: 15.171173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187282221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187282215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117b54a904e82f14cb1833b42c3c460d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songNameText: {fileID: 168585310}
+  artistNameText: {fileID: 1491081022}
+  musicPlayer: {fileID: 187282216}
 --- !u!1 &198827149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,7 +5338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &496623627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5324,7 +5424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &503490162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5758,7 +5858,7 @@ PrefabInstance:
     - target: {fileID: 5824888959264055625, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: m_Name
-      value: HoverButtons
+      value: PlayPauseButton
       objectReference: {fileID: 0}
     - target: {fileID: 5824888960384687345, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -6041,7 +6141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &533149983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7327,9 +7427,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2936946410561936449, guid: 1addbd7e028ef294b822b43b0fd54297,
         type: 3}
+      propertyPath: audioUrl
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936946410561936449, guid: 1addbd7e028ef294b822b43b0fd54297,
+        type: 3}
       propertyPath: audioSlider
       value: 
       objectReference: {fileID: 1183145702}
+    - target: {fileID: 2936946410561936449, guid: 1addbd7e028ef294b822b43b0fd54297,
+        type: 3}
+      propertyPath: musicPlayer
+      value: 
+      objectReference: {fileID: 187282216}
     - target: {fileID: 2936946410561936449, guid: 1addbd7e028ef294b822b43b0fd54297,
         type: 3}
       propertyPath: durationText
@@ -7340,10 +7450,20 @@ PrefabInstance:
       propertyPath: elapsedTimeText
       value: 
       objectReference: {fileID: 967226034}
+    - target: {fileID: 2936946410561936449, guid: 1addbd7e028ef294b822b43b0fd54297,
+        type: 3}
+      propertyPath: spriteController
+      value: 
+      objectReference: {fileID: 210565787}
     - target: {fileID: 5353807066326380954, guid: 1addbd7e028ef294b822b43b0fd54297,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353807066326380954, guid: 1addbd7e028ef294b822b43b0fd54297,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6785512788938990019, guid: 1addbd7e028ef294b822b43b0fd54297,
         type: 3}
@@ -7495,7 +7615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &727234866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8177,7 +8297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &764242768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9430,7 +9550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &901046796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10151,7 +10271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &994078259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10513,7 +10633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1025111885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10599,7 +10719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1050432723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11177,7 +11297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1102732184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12264,7 +12384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1158638013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12545,7 +12665,7 @@ PrefabInstance:
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -12561,7 +12681,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 187282216}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -12580,7 +12700,7 @@ PrefabInstance:
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SwitchPlay
+      value: PlayNext
       objectReference: {fileID: 0}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -12590,7 +12710,7 @@ PrefabInstance:
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SpriteController, Assembly-CSharp
+      value: MusicPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -12660,7 +12780,7 @@ PrefabInstance:
     - target: {fileID: 5824888959264055625, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: m_Name
-      value: HoverButtons (2)
+      value: Next
       objectReference: {fileID: 0}
     - target: {fileID: 5824888960384687345, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -13708,7 +13828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1275085826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14289,7 +14409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1346497986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14425,7 +14545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1402237034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14952,7 +15072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1451252729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15868,7 +15988,7 @@ GameObject:
   - component: {fileID: 1491081023}
   - component: {fileID: 1491081022}
   m_Layer: 0
-  m_Name: songName (1)
+  m_Name: artistName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15890,7 +16010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.4, y: 45.9}
+  m_AnchoredPosition: {x: -44.4, y: 35.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1491081022
@@ -16016,7 +16136,7 @@ PrefabInstance:
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -16032,7 +16152,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 187282216}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -16051,7 +16171,7 @@ PrefabInstance:
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SwitchPlay
+      value: PlayPrevious
       objectReference: {fileID: 0}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -16061,7 +16181,7 @@ PrefabInstance:
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SpriteController, Assembly-CSharp
+      value: MusicPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5824888959244177867, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -16131,7 +16251,7 @@ PrefabInstance:
     - target: {fileID: 5824888959264055625, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
       propertyPath: m_Name
-      value: HoverButtons (1)
+      value: Previous
       objectReference: {fileID: 0}
     - target: {fileID: 5824888960384687345, guid: 4bf459842f45eb648a8e314fa01c55b6,
         type: 3}
@@ -16391,7 +16511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1535265916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16708,7 +16828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1558012630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18395,7 +18515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ceb7bc4996b4145a7549761682b835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureURL: https://marketplace.canva.com/EAEqlr422aw/1/0/1600w/canva-falling-modern-aesthetic-music-album-cover-KsRCFSNg4XA.jpg
+  musicPlayer: {fileID: 0}
 --- !u!114 &1800627133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23480,6 +23600,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 187282220}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1571307351}

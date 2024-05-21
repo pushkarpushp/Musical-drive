@@ -6,7 +6,7 @@ public class SpriteController : MonoBehaviour
 {
     public GameObject Play;
     public GameObject Pause;
-    public bool isPlaying = false;
+    public bool isPlaying = true;
     public AudioSource PlaySource;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,8 @@ public class SpriteController : MonoBehaviour
             Play.SetActive(false);
             Pause.SetActive(true);
             isPlaying = true;
-        }else
+        }
+        else
         {
             PlaySource.Pause();
             Play.SetActive(true);
@@ -32,4 +33,22 @@ public class SpriteController : MonoBehaviour
             isPlaying = false;
         }
     }
+
+    void Update()
+    {
+        if (isPlaying)
+        {
+            Play.SetActive(false);
+            Pause.SetActive(true);
+        }
+        else
+        {
+            Play.SetActive(true);
+            Pause.SetActive(false);
+        }
+    }
+
+
+
+
 }
