@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class LoadOnlineImageToCanvas : MonoBehaviour
 {
     public MusicPlayer musicPlayer;
+    public Texture2D loadingTexture;
     private string bannerUrl = ""; // URL to your image file
+
+    private bool musicLoading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,17 @@ public class LoadOnlineImageToCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (musicPlayer.isMusicLoading && musicLoading) return;
+
+        if (musicPlayer.isMusicLoading)
+        {
+            musicLoading = true;
+            gameObject.GetComponent<RawImage>().texture = loadingTexture;
+            return;
+        }
+
+        musicLoading = false;
+
         if (bannerUrl != musicPlayer.selectedItem.Metadata.Asset.Cover.Optimized.Uri)
         {
             bannerUrl = musicPlayer.selectedItem.Metadata.Asset.Cover.Optimized.Uri;

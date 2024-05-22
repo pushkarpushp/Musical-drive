@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class MusicPlayer : MonoBehaviour
 {
+  public bool isMusicLoading = true;
   public enum SelectedPlayList
   {
     EXPLORE,
@@ -39,8 +40,8 @@ public class MusicPlayer : MonoBehaviour
 
 
   private string nextCursor = "";
-  public static List<Types.Item> items = new List<Types.Item>();
-  public static int currentItemIndex = 0;
+  public List<Types.Item> items = new List<Types.Item>();
+  public int currentItemIndex = 0;
 
   public Types.Item selectedItem = null;
 
@@ -71,6 +72,7 @@ public class MusicPlayer : MonoBehaviour
 
   public void PlayAtIndex(int index)
   {
+    Debug.Log("Playing at index: " + index);
     if (items.Count > 0 && index >= 0 && index < items.Count)
     {
       currentItemIndex = index;

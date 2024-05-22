@@ -22,7 +22,7 @@ public class TextHandler : MonoBehaviour
 
     void updateText()
     {
-        var newSongName = musicPlayer.selectedItem.Metadata.Title ?? Helper.ShortenString(musicPlayer.selectedItem.Metadata.Content, 40);
+        var newSongName = Helper.ShortenString(musicPlayer.selectedItem.Metadata.Title ?? musicPlayer.selectedItem.Metadata.Content, 40);
 
         if (newSongName != SongName)
         {

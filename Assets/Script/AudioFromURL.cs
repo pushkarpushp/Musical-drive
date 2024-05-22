@@ -52,6 +52,8 @@ public class AudioFromURL : MonoBehaviour
 
     IEnumerator PlayAudioFromURL(string url)
     {
+
+        musicPlayer.isMusicLoading = true;
         var audioType = AudioType.MPEG;
 
         if (url.EndsWith(".wav"))
@@ -76,6 +78,8 @@ public class AudioFromURL : MonoBehaviour
                 audioSlider.value = 0;
                 spriteController.isPlaying = true;
             }
+
+            musicPlayer.isMusicLoading = false;
         }
     }
 
