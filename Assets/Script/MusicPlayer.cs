@@ -15,15 +15,16 @@ public class MusicPlayer : MonoBehaviour
   }
   public SelectedPlayList selectedPlayList;
 
-  public async void SetSelectedPlayList(SelectedPlayList playlist)
-  {
-    if (playlist == selectedPlayList) return;
-    selectedPlayList = playlist;
-    items = new List<Types.Item>();
-    nextCursor = "";
-    currentItemIndex = 0;
-    selectedItem = null;
+  private string nextCursor = "";
 
+  public List<Types.Item> items = new List<Types.Item>();
+  public int currentItemIndex = 0;
+
+  public Types.Item selectedItem = null;
+
+
+  public async Task GetMusicItems()
+  {
     switch (selectedPlayList)
     {
       case SelectedPlayList.EXPLORE:
@@ -38,12 +39,19 @@ public class MusicPlayer : MonoBehaviour
     }
   }
 
+  public async void SetSelectedPlayList(SelectedPlayList playlist)
+  {
+    if (playlist == selectedPlayList) return;
+    selectedPlayList = playlist;
+    items = new List<Types.Item>();
+    nextCursor = "";
+    currentItemIndex = 0;
+    selectedItem = null;
 
-  private string nextCursor = "";
-  public List<Types.Item> items = new List<Types.Item>();
-  public int currentItemIndex = 0;
+    await GetMusicItems();
+  }
 
-  public Types.Item selectedItem = null;
+
 
   public async void PlayNext()
   {
@@ -56,7 +64,7 @@ public class MusicPlayer : MonoBehaviour
     // if the selected item is one of the last 3 items, load more items
     if (currentItemIndex >= items.Count - 3)
     {
-      await getExploreMusicItems();
+      await GetMusicItems();
     }
 
   }
@@ -68,16 +76,23 @@ public class MusicPlayer : MonoBehaviour
       currentItemIndex--;
       selectedItem = items[currentItemIndex];
     }
+
   }
 
-  public void PlayAtIndex(int index)
+  public async void PlayAtIndex(int index)
   {
-    Debug.Log("Playing at index: " + index);
     if (items.Count > 0 && index >= 0 && index < items.Count)
     {
       currentItemIndex = index;
       selectedItem = items[currentItemIndex];
     }
+
+    // if the selected item is one of the last 3 items, load more items
+    if (currentItemIndex >= items.Count - 3)
+    {
+      await GetMusicItems();
+    }
+
   }
 
   // Start is called before the first frame update
@@ -187,11 +202,7 @@ public class MusicPlayer : MonoBehaviour
         }
       }
     };
-
-    Debug.Log("Fetching music items...");
     string response = await GraphQL.Instance.PostGraphQLRequest(query, variables);
-
-    Debug.Log(response);
 
     var settings = new JsonSerializerSettings
     {
@@ -199,10 +210,6 @@ public class MusicPlayer : MonoBehaviour
     };
 
     Types.ExplorePublicationsRoot data = JsonConvert.DeserializeObject<Types.ExplorePublicationsRoot>(response, settings);
-
-    Debug.Log(data.Data.ExplorePublications.Items[0].Metadata.Asset.Audio.Optimized.Uri);
-
-    Debug.Log(data.Data.ExplorePublications.Items);
 
     if (data?.Data?.ExplorePublications?.Items != null)
     {
@@ -213,7 +220,6 @@ public class MusicPlayer : MonoBehaviour
     if (items != null && items.Count > 0 && selectedItem == null)
     {
       selectedItem = items[currentItemIndex];
-      Debug.Log("Selected item: " + selectedItem.Metadata.Asset.Audio.Optimized.Uri);
     }
 
   }

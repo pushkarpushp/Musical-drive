@@ -40,7 +40,6 @@ public class AudioFromURL : MonoBehaviour
         if (musicPlayer.selectedItem.Metadata.Asset.Audio.Optimized.Uri != audioUrl)
         {
             audioUrl = musicPlayer.selectedItem.Metadata.Asset.Audio.Optimized.Uri;
-            Debug.Log("Audio URL: " + audioUrl);
             setMusic(audioUrl);
         }
     }

@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMusicLoading: 1
-  selectedPlayList: 1
+  selectedPlayList: 0
   currentItemIndex: 0
 --- !u!114 &187282217
 MonoBehaviour:

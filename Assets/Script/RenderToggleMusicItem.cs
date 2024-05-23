@@ -15,34 +15,16 @@ public class RenderToggleItem : MonoBehaviour
 
     public LoadImageFromUrl loadImageFromUrl;
 
-    private Toggle toggle;
-
     public bool isPlaying = false;
 
     public void SetMusic()
     {
-        Debug.Log("SetMusic");
-        // Debug.Log("Toogle is on" + value);
-
         musicPlayer.PlayAtIndex(index);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("RenderToggleItem Start" + item);
-        toggle = GetComponent<Toggle>();
-
-        // toggle.onValueChanged.AddListener((value) =>
-        // {
-        //     Debug.Log("Toogle is on" + value);
-        //     if (value)
-        //     {
-        //         musicPlayer.PlayAtIndex(index);
-        //     } else {
-
-        //     }
-        // });
 
         // get title gameobject which is the child of this gameobject
         TextMeshProUGUI title = transform.Find("Title").GetComponent<TextMeshProUGUI>();
@@ -55,18 +37,11 @@ public class RenderToggleItem : MonoBehaviour
         TextMeshProUGUI artist = transform.Find("Artist").GetComponent<TextMeshProUGUI>();
 
 
-        var newArtistName = musicPlayer.selectedItem.Metadata.Asset.Artist ?? musicPlayer?.selectedItem?.By?.Handle?.FullHandle;
+        var newArtistName = item.Metadata.Asset.Artist ?? item.By?.Handle?.FullHandle;
 
         artist.text = newArtistName;
 
         loadImageFromUrl.SetUrl(item.Metadata.Asset.Cover.Optimized.Uri);
-
-        // GameObject Panel = transform.Find("Panel").gameObject;
-
-        // // RawImage is the child of Panel
-        // RawImage rawImage = Panel.transform.Find("RawImage").GetComponent<RawImage>();
-
-        // rawImage.GetComponent<LoadImageFromUrl>().SetUrl(item.Metadata.Asset.Cover.Optimized.Uri);
     }
 
     void Update()
@@ -85,23 +60,5 @@ public class RenderToggleItem : MonoBehaviour
             isPlaying = false;
             return;
         }
-
-        // if (toggle.isOn)
-        // {
-        //     Debug.Log("Toogle is on Update" + toggle.isOn);
-        //     Debug.Log("at index" + index);
-
-        //     musicPlayer.PlayAtIndex(index);
-        //     return;
-        // }
     }
-
-    // Update is called once per frame
-    // void FixedUpdate()
-    // {
-    //     if (musicPlayer.currentItemIndex != index)
-    //     {
-    //         toggle.isOn = false;
-    //     }
-    // }
 }

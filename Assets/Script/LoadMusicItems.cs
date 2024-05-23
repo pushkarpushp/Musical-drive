@@ -36,7 +36,7 @@ public class LoadMusicItems : MonoBehaviour
             InstantiateAndAddMusicItems(musicPlayer.items, 0);
         }
 
-        currentItems = musicPlayer.items;
+        currentItems = new List<Types.Item>(musicPlayer.items);
     }
 
     void RemoveAllMusicItems()
