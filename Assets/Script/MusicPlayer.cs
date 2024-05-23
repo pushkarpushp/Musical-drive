@@ -189,7 +189,7 @@ public class MusicPlayer : MonoBehaviour
       request = new
       {
         cursor = nextCursor.Length > 0 ? nextCursor : (string)null,
-        limit = "Ten",
+        limit = "Fifty",
         orderBy,
         where = new
         {

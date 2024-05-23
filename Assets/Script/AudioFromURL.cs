@@ -14,6 +14,7 @@ public class AudioFromURL : MonoBehaviour
     public Slider audioSlider; // Reference to the UI Slider
     public TextMeshProUGUI elapsedTimeText; // Reference to the UI Text for elapsed time
     public TextMeshProUGUI durationText; // Reference to the UI Text for total duration
+    private bool isLoadingSong = false;
 
     void Start()
     {
@@ -31,6 +32,13 @@ public class AudioFromURL : MonoBehaviour
 
                 // Update elapsed time text
                 elapsedTimeText.text = FormatTime(audioSource.time);
+
+                isLoadingSong = false;
+            }
+            else if (!isLoadingSong)
+            {
+                musicPlayer.PlayNext();
+                isLoadingSong = true;
             }
 
             // Update total duration text
