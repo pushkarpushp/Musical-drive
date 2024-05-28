@@ -120,6 +120,7 @@ public class AudioFromURL : MonoBehaviour
                 // Optionally, reset the slider to 0 at the start of playing
                 audioSlider.value = 0;
                 spriteController.isPlaying = true;
+                isPlaying = true;
             }
 
             musicPlayer.isMusicLoading = false;
