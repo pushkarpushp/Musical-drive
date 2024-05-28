@@ -15,10 +15,46 @@ public class AudioFromURL : MonoBehaviour
     public TextMeshProUGUI elapsedTimeText; // Reference to the UI Text for elapsed time
     public TextMeshProUGUI durationText; // Reference to the UI Text for total duration
     private bool isLoadingSong = false;
+    public bool isPlaying = true;
+    public bool isPaused = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlaySong()
+    {
+        if (!isPlaying)
+        {
+            audioSource.Play();
+            spriteController.isPlaying = true;
+            isPlaying = true;
+            isPaused = false;
+        }
+    }
+
+    public void PauseSong()
+    {
+        if (isPlaying)
+        {
+            audioSource.Pause();
+            spriteController.isPlaying = false;
+            isPlaying = false;
+            isPaused = true;
+        }
+    }
+
+    public void SwitchPlay()
+    {
+        if (!isPlaying)
+        {
+            PlaySong();
+        }
+        else
+        {
+            PauseSong();
+        }
     }
 
     void Update()
@@ -35,7 +71,7 @@ public class AudioFromURL : MonoBehaviour
 
                 isLoadingSong = false;
             }
-            else if (!isLoadingSong)
+            else if (!isLoadingSong && !isPaused)
             {
                 musicPlayer.PlayNext();
                 isLoadingSong = true;
