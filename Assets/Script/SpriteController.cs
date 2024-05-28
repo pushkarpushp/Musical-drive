@@ -48,7 +48,19 @@ public class SpriteController : MonoBehaviour
         }
     }
 
-
-
+    public void play_music()
+    {
+        PlaySource.Play();
+        Play.SetActive(false);
+        Pause.SetActive(true);
+        isPlaying = true;
+    }
+    public void pause_music()
+    {
+        PlaySource.Pause();
+        Play.SetActive(true);
+        Pause.SetActive(false);
+        isPlaying = false;
+    }
 
 }
