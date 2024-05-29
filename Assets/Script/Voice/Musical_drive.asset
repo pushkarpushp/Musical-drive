@@ -20,9 +20,9 @@ MonoBehaviour:
     isPrivate: 1
     createdAt: 2024-05-27T08:36:36-0700
     trainingStatus: 1
-    lastTrainDuration: 58
-    lastTrainedAt: 2024-05-28T02:31:07-0700
-    nextTrainAt: 2024-05-28T02:30:09-0700
+    lastTrainDuration: 64
+    lastTrainedAt: 2024-05-28T17:01:04-0700
+    nextTrainAt: 2024-05-28T17:00:00-0700
     intents:
     - id: 1527020381579223
       name: next_song
@@ -35,6 +35,9 @@ MonoBehaviour:
       entities: []
     - id: 460731393207384
       name: previous_song
+      entities: []
+    - id: 873511851202562
+      name: recenter_player
       entities: []
     entities: []
     traits: []
@@ -567,7 +570,7 @@ MonoBehaviour:
   - Oculus.Voice.Demo, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - Meta.WitAi.Samples, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   relaxedResolution: 0
-  _lastRefreshSeconds: 1716888719.4768875
+  _lastRefreshSeconds: 1716987684.2536151
 --- !u!114 &1511219755781854740
 MonoBehaviour:
   m_ObjectHideFlags: 0

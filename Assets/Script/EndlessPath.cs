@@ -9,9 +9,9 @@ public class EndlessPath : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Trigger"))
-        {
-            Instantiate(RoadSection, new Vector3(0, 0, SpawnDistance), Quaternion.identity);
-        }
+       // if (other.gameObject.CompareTag("Trigger"))
+        //{
+       //     Instantiate(RoadSection, new Vector3(0, 0, SpawnDistance), Quaternion.identity);
+       // }
     }
 }
