@@ -37,7 +37,12 @@ public class GraphQL : MonoBehaviour
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Origin", "https://diversehq.xyz");
 
+        if (!string.IsNullOrEmpty(Wallet.authenticate?.AccessToken))
+        {
+            request.SetRequestHeader("X-Access-Token", $"Bearer {Wallet.authenticate.AccessToken}");
+        }
         // Create a TaskCompletionSource to represent the operation
         var tcs = new TaskCompletionSource<string>();
 

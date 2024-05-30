@@ -22,6 +22,8 @@ public class MusicPlayer : MonoBehaviour
 
   public Types.Item selectedItem = null;
 
+  public ToastManager toastManager;
+
 
   public async Task GetMusicItems()
   {
@@ -48,10 +50,26 @@ public class MusicPlayer : MonoBehaviour
     currentItemIndex = 0;
     selectedItem = null;
 
+    if (Wallet.lensProfile == null)
+    {
+      // todo show pop up message instead of Log message
+      Debug.Log("Lens Profile not logged in");
+      return;
+    }
+
     await GetMusicItems();
   }
 
 
+  public async void RefreshPlayList()
+  {
+    items = new List<Types.Item>();
+    nextCursor = "";
+    currentItemIndex = 0;
+    selectedItem = null;
+
+    await GetMusicItems();
+  }
 
   public async void PlayNext()
   {
@@ -96,9 +114,8 @@ public class MusicPlayer : MonoBehaviour
   }
 
   // Start is called before the first frame update
-  async void Start()
+  void Start()
   {
-    await getExploreMusicItems();
   }
 
   public void SelectExploreMusicPlaylist()
@@ -128,16 +145,24 @@ public class MusicPlayer : MonoBehaviour
 
   public async Task getMyMintsMusicItems()
   {
-    await getExploreMusicItems("LATEST");
+    if (Wallet.lensProfile == null)
+    {
+      toastManager.SetMessage("Lens Profile not logged in");
+      return;
+    }
+    await getMyMintedPublicationItems();
   }
 
-  public async Task getExploreMusicItems(string orderBy = "TOP_REACTED")
+
+  public async Task getMyMintedPublicationItems()
   {
+    if (Wallet.lensProfile == null) return;
+
     string query = @"
-        query ExplorePublications($request: ExplorePublicationRequest!) {
-  explorePublications(request: $request) {
+    query Publications($request: PublicationsRequest!, $hasActedRequest2: PublicationOperationsActedArgs, $hasReactedRequest2: PublicationOperationsReactionArgs) {
+  publications(request: $request) {
     items {
-      ... on Post {
+       ... on Post {
         id
         by {
           handle {
@@ -146,7 +171,7 @@ public class MusicPlayer : MonoBehaviour
           metadata {
             picture {
               ... on ImageSet {
-                raw {
+                optimized {
                   uri
                 }
               }
@@ -156,11 +181,9 @@ public class MusicPlayer : MonoBehaviour
         metadata {
           ... on AudioMetadataV3 {
             title
-            content
             rawURI
             asset {
               artist
-              duration
               audio {
                 optimized {
                   uri
@@ -174,14 +197,139 @@ public class MusicPlayer : MonoBehaviour
             }
           }
         }
+        openActionModules {
+          ... on SimpleCollectOpenActionSettings {
+            type
+            amount {
+              value
+            }
+          }
+        }
+        operations {
+          hasActed(request: $hasActedRequest2) {
+            value
+          }
+          canAct
+          hasReacted(request: $hasReactedRequest2)
+        }
       }
     }
-    
     pageInfo {
       next
     }
   }
 }
+    
+    ";
+
+    var variables = new
+    {
+      request = new
+      {
+        cursor = nextCursor.Length > 0 ? nextCursor : (string)null,
+        limit = "Ten",
+        where = new
+        {
+          actedBy = Wallet.lensProfile.Id,
+          publicationTypes = "POST",
+          metadata = new
+          {
+            mainContentFocus = "AUDIO"
+          }
+        }
+      },
+      hasReactedRequest2 = new
+      {
+        type = "UPVOTE"
+      }
+    };
+
+    string response = await GraphQL.Instance.PostGraphQLRequest(query, variables);
+
+    var settings = new JsonSerializerSettings
+    {
+      NullValueHandling = NullValueHandling.Ignore
+    };
+
+    Types.PublicationsRoot data = JsonConvert.DeserializeObject<Types.PublicationsRoot>(response, settings);
+
+    if (data?.Data?.Publications?.Items != null)
+    {
+      items.AddRange(data.Data.Publications.Items);
+      nextCursor = data.Data.Publications.PageInfo.Next;
+    }
+
+    if (items != null && items.Count > 0 && selectedItem == null)
+    {
+      selectedItem = items[currentItemIndex];
+    }
+
+  }
+
+  public async Task getExploreMusicItems(string orderBy = "LATEST")
+  {
+    string query = @"
+query ExplorePublications($request: ExplorePublicationRequest!, $hasActedRequest2: PublicationOperationsActedArgs, $hasReactedRequest2: PublicationOperationsReactionArgs) {
+  explorePublications(request: $request) {
+    items {
+      ... on Post {
+        id
+        by {
+          handle {
+            fullHandle
+          }
+          metadata {
+            picture {
+              ... on ImageSet {
+                optimized {
+                  uri
+                }
+              }
+            }
+          }
+        }
+        metadata {
+          ... on AudioMetadataV3 {
+            title
+            rawURI
+            asset {
+              artist
+              audio {
+                optimized {
+                  uri
+                }
+              }
+              cover {
+                optimized {
+                  uri
+                }
+              }
+            }
+          }
+        }
+        openActionModules {
+          ... on SimpleCollectOpenActionSettings {
+            type
+            amount {
+              value
+            }
+          }
+        }
+        operations {
+          hasActed(request: $hasActedRequest2) {
+            value
+          }
+          canAct
+          hasReacted(request: $hasReactedRequest2)
+        }
+      }
+    }
+    pageInfo {
+      next
+    }
+  }
+}
+
         ";
 
     var variables = new
@@ -200,6 +348,10 @@ public class MusicPlayer : MonoBehaviour
           },
           since = 1709164800
         }
+      },
+      hasReactedRequest2 = new
+      {
+        type = "UPVOTE"
       }
     };
     string response = await GraphQL.Instance.PostGraphQLRequest(query, variables);
