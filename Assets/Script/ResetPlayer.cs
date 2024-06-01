@@ -13,7 +13,7 @@ public class ResetPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ResetPosition", 2f);
+        Invoke("ResetPosition", 0.2f);
     }
 
     // Update is called once per frame

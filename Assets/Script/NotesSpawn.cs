@@ -5,76 +5,65 @@ using UnityEngine;
 public class NotesSpawn : MonoBehaviour
 {
     // List of spawn points
-    public Transform[] spawnPoints;
+    public List<Transform> spawnPoints;
 
     // List of prefabs to spawn
-    public GameObject[] prefabs;
+    public List<GameObject> prefabs;
 
-    // Control the randomness (seed)
-    public int randomnessSeed = 0;
+    // Public variables to set rotation and scale of the spawned prefabs
+    public Vector3 prefabRotation = Vector3.zero;
+    public Vector3 prefabScale = Vector3.one;
 
-    // Rotation to apply to each spawned prefab
-    public Vector3 spawnRotation;
+    // Reference to the road transform
+    public Transform roadTransform;
 
-    // Scale to apply to each spawned prefab
-    public Vector3 spawnScale = Vector3.one;
-
-    // Use this for initialization
+    // Start is called before the first frame update
     void Start()
     {
-        // Initialize the random number generator with the provided seed
-        Random.InitState(randomnessSeed);
+        // Make sure we do not spawn more prefabs than there are spawn points
+        int numSpawnLocations = Mathf.Min(spawnPoints.Count, prefabs.Count);
 
-        // Shuffle the spawn points array
-        Shuffle(spawnPoints);
+        // Shuffle spawn points and pick the required number
+        List<Transform> selectedSpawnPoints = GetRandomElements(spawnPoints, numSpawnLocations);
 
-        // Randomly decide how many spawn points to use (between 0 and the total number of spawn points)
-        int numSpawnPointsToUse = Random.Range(0, spawnPoints.Length + 1);
+        // Shuffle prefabs and pick the required number
+        List<GameObject> selectedPrefabs = GetRandomElements(prefabs, numSpawnLocations);
 
-        // Ensure we don't use more spawn points than there are prefabs
-        numSpawnPointsToUse = Mathf.Min(numSpawnPointsToUse, prefabs.Length);
-
-        // Shuffle the prefabs array
-        Shuffle(prefabs);
-
-        // Iterate over the selected number of spawn points
-        for (int i = 0; i < numSpawnPointsToUse; i++)
+        // Spawn prefabs at selected spawn points
+        for (int i = 0; i < numSpawnLocations; i++)
         {
-            // Select a random prefab from the shuffled list
-            GameObject prefabToSpawn = prefabs[i];
+            Vector3 spawnPosition = selectedSpawnPoints[i].position;
+            Quaternion spawnRotation = Quaternion.Euler(prefabRotation);
 
-            // Instantiate the prefab at the spawn point's position
-            GameObject spawnedPrefab = Instantiate(prefabToSpawn, spawnPoints[i].position, Quaternion.Euler(spawnRotation));
+            GameObject instance = Instantiate(selectedPrefabs[i], spawnPosition, spawnRotation);
+            instance.transform.localScale = prefabScale;
 
-            // Set the scale of the spawned prefab
-            spawnedPrefab.transform.localScale = spawnScale;
+            // Parent the prefab to the road transform
+            instance.transform.SetParent(roadTransform);
 
-            // Set the spawned prefab as a child of the current spawn point
-            spawnedPrefab.transform.parent = spawnPoints[i];
+            // Log the position and name of the instantiated object for debugging
+            Debug.Log($"Spawned {instance.name} at {spawnPosition}");
         }
+
+        gameObject.SetActive(false);
     }
 
-    // Function to shuffle an array of Transforms
-    void Shuffle(Transform[] array)
+    // Helper method to get a random subset of elements from a list
+    private List<T> GetRandomElements<T>(List<T> list, int count)
     {
-        for (int i = array.Length - 1; i > 0; i--)
-        {
-            int randomIndex = Random.Range(0, i + 1);
-            Transform temp = array[i];
-            array[i] = array[randomIndex];
-            array[randomIndex] = temp;
-        }
-    }
+        // Create a copy of the list
+        List<T> copyList = new List<T>(list);
 
-    // Function to shuffle an array of GameObjects
-    void Shuffle(GameObject[] array)
-    {
-        for (int i = array.Length - 1; i > 0; i--)
+        // Shuffle the copy
+        for (int i = 0; i < copyList.Count; i++)
         {
-            int randomIndex = Random.Range(0, i + 1);
-            GameObject temp = array[i];
-            array[i] = array[randomIndex];
-            array[randomIndex] = temp;
+            T temp = copyList[i];
+            int randomIndex = Random.Range(i, copyList.Count);
+            copyList[i] = copyList[randomIndex];
+            copyList[randomIndex] = temp;
         }
+
+        // Return the required number of elements
+        return copyList.GetRange(0, Mathf.Min(count, copyList.Count));
     }
 }

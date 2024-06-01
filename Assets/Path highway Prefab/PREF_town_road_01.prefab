@@ -4875,9 +4875,9 @@ MonoBehaviour:
   - {fileID: 8103835995752364377, guid: 869778f8f60a0d14fbe441e6234eb76e, type: 3}
   - {fileID: 5242333936383656507, guid: ee53079397fa8714a8d387408a7e1af5, type: 3}
   - {fileID: 3272600197410704408, guid: cadf2bcf42c9ef445945306182d9da72, type: 3}
-  randomnessSeed: 0
-  spawnRotation: {x: 90, y: 0, z: 0}
-  spawnScale: {x: 30, y: 30, z: 30}
+  prefabRotation: {x: 90, y: 0, z: 0}
+  prefabScale: {x: 20, y: 20, z: 20}
+  roadTransform: {fileID: 2163707046887626177}
 --- !u!1 &2804455188571021623
 GameObject:
   m_ObjectHideFlags: 0
