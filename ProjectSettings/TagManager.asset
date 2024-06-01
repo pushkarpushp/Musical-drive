@@ -7,6 +7,7 @@ TagManager:
   - Trigger
   - Destroyer
   - Music
+  - Meter
   layers:
   - Default
   - TransparentFX

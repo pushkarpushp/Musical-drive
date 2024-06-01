@@ -63,6 +63,7 @@ public class MusicPlayer : MonoBehaviour
 
   public async void RefreshPlayList()
   {
+        Debug.Log("Refresh playlist called");
     items = new List<Types.Item>();
     nextCursor = "";
     currentItemIndex = 0;
@@ -266,8 +267,9 @@ public class MusicPlayer : MonoBehaviour
 
   }
 
-  public async Task getExploreMusicItems(string orderBy = "LATEST")
+  public async Task getExploreMusicItems(string orderBy = "TOP_REACTED")
   {
+        Debug.Log("Explore opened");
     string query = @"
 query ExplorePublications($request: ExplorePublicationRequest!, $hasActedRequest2: PublicationOperationsActedArgs, $hasReactedRequest2: PublicationOperationsReactionArgs) {
   explorePublications(request: $request) {
@@ -372,8 +374,10 @@ query ExplorePublications($request: ExplorePublicationRequest!, $hasActedRequest
     if (items != null && items.Count > 0 && selectedItem == null)
     {
       selectedItem = items[currentItemIndex];
+      
     }
-
-  }
+        Debug.Log(selectedItem);
+        Debug.Log(items);
+    }
 
 }

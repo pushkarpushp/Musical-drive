@@ -192,17 +192,18 @@ mutation Authenticate($request: SignedAuthChallenge!) {
       lensProfile = profile;
       Debug.Log("Logged in as " + lensProfile.Handle.FullHandle);
       toastManager.SetMessage("Logged in as " + lensProfile.Handle.FullHandle);
-
-      handleText.text = lensProfile.Handle.FullHandle;
+            musicPlayer.RefreshPlayList();
+            handleText.text = lensProfile.Handle.FullHandle;
       logoImage.SetUrl(lensProfile.Metadata.Picture.Optimized.Uri);
-
-      openMenu.ShowLoggedInMenu();
+            
+            
+            openMenu.ShowLoggedInMenu();
     }
-
-    musicPlayer.RefreshPlayList();
-
-    // ActOnSimpleCollectOpenAction("0xf71a-0x032a");
-  }
+        
+    
+       
+        // ActOnSimpleCollectOpenAction("0xf71a-0x032a");
+    }
 
   public void CopyAddress()
   {

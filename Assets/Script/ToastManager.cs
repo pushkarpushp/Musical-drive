@@ -7,11 +7,8 @@ public class ToastManager : MonoBehaviour
 {
     public string message;
     public TMPro.TextMeshPro text;
+    public GameObject toastBox;
     // Start is called before the first frame update
-    void Start()
-    {
-        text = GetComponent<TMPro.TextMeshPro>();
-    }
 
 
     public void SetMessage(string message)
@@ -19,13 +16,19 @@ public class ToastManager : MonoBehaviour
         this.message = message;
         if (message == null)
         {
-            gameObject.SetActive(false);
+            toastBox.SetActive(false);
             text.text = "";
         }
         else
         {
-            gameObject.SetActive(true);
+            toastBox.SetActive(true);
             text.text = message;
+            Invoke("disableToastBox", 3f);
         }
+    }
+
+    public void disableToastBox()
+    {
+        toastBox.SetActive(false);
     }
 }
