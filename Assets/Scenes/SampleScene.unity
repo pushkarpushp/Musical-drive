@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.30344734, g: 0.12422385, b: 0.075425796, a: 1}
+  m_IndirectSpecularColor: {r: 0.30077857, g: 0.124893285, b: 0.0767355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4804,7 +4804,7 @@ MonoBehaviour:
   likedIcon: {fileID: 1732412891}
   mintedIcon: {fileID: 1342816979}
   MintButton: {fileID: 1365110521}
-  toastManager: {fileID: 0}
+  toastManager: {fileID: 187282222}
   liked: 0
   minted: 0
   wallet: {fileID: 1670816040}
